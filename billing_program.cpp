@@ -5,7 +5,7 @@ using namespace std;
 int main() 
 {
 	cout << "Hello ,welcome to carpet cleaning service !" << endl;
-	cout << "\nhow many rooms would you liked to be cleaned?";
+	cout << "\nHow many rooms would you liked to be cleaned?";
 
 	int number_of_rooms(0);
 	cin >> number_of_rooms;
