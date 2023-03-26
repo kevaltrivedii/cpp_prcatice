@@ -29,7 +29,7 @@ public:
 
 class Registration
 {
-protected:
+private:
     string name;
     int age;
     string email;
@@ -66,31 +66,37 @@ public:
         cout << "Registration completed successfully." << endl;
         cout << "=========================================================" << endl;
     }
+
+    string getEmail()
+    {
+        return email;
+    }
+    string getPassword() 
+    { 
+        return password; 
+    }
 };
 
-class Login: public Registration
+class Login
 {
-protected:
-    string username;
-    string password;
-
 public:
-    void askLogin()
+    void askLogin(string email, string password)
     {
+        string input_email, input_password;
         cout << "Enter login credentials " << endl;
         cout << "Username: ";
-        cin >> username;
+        cin >> input_email;
         cout << "Password: ";
-        cin >> password;
+        cin >> input_password;
 
-        if (username != email && password != confirmPassword)
+        if (email == input_email && password == input_password)
         {
-            cout << "Invalid email or password\n";
-            askLogin();
+            cout << "Access on account successful\n";
         }
         else
         {
-            cout << "Access on account successful\n";
+            cout << "Invalid email or password\n";
+            askLogin(email, password);
         }
     }
 };
@@ -101,12 +107,12 @@ void Registration::askSignUp()
     cout << "Do you want to sign up? (y/n): ";
     cin >> choice;
     cout << "===========================================================" << endl;
-    if (choice == 'Y' && 'y')
+    if (choice == 'y')
     {
-        cout << "****************Welcome to registration****************" << endl;
+        cout << "Welcome to registration" << endl;
         takeRegistration();
         Login login;
-        login.askLogin();
+        login.askLogin(getEmail(), getPassword());
         return;
     }
     else
